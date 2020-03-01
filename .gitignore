@@ -8,3 +8,12 @@ erl_crash.dump
 *.beam
 /config/*.secret.exs
 .elixir_ls/
+/tmp
+/node_modules
+/assets/node_modules
+/priv/static/
+/installer/_build
+/installer/tmp
+/installer/doc
+/installer/deps
+.idea/
