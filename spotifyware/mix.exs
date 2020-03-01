@@ -31,7 +31,7 @@ defmodule Spotifyware.MixProject do
   def application do
     [
       mod: {Spotifyware.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :spotiauth]
     ]
   end
 
@@ -44,6 +44,7 @@ defmodule Spotifyware.MixProject do
       {:ring_logger, "~> 0.6"},
       {:toolshed, "~> 0.2"},
       {:circuits_gpio, "~> 0.4"},
+      {:spotiauth, path: "../spotiauth"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},

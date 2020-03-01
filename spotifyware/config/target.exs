@@ -86,8 +86,16 @@ config :mdns_lite,
     }
   ]
 
-# Import target specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-# Uncomment to use target specific configurations
+config :spotify_ex,
+  port: 80,
+  scopes: [
+    "user-modify-playback-state",
+    "user-read-playback-state",
+    "user-read-currently-playing",
+    "user-read-email",
+    "user-library-read",
+    "user-top-read"
+  ],
+  callback_url: "http://spotifyware.local/authenticate"
 
 # import_config "#{Mix.target()}.exs"

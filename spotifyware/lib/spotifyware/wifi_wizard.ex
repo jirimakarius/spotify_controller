@@ -17,12 +17,19 @@ defmodule Spotifyware.WifiWizard do
 
   def on_wizard_exit() do
     Logger.info("[WifiWizard] - WiFi Wizard stopped")
+
+    if Spotiauth.Credentials.configured() do
+      Logger.info("[Spotiauth] - Already configured")
+    else
+      Spotiauth.start()
+    end
   end
 
   def start_wizard(_wifi_configured \\ false)
 
   def start_wizard(_wifi_configured? = true) do
     Logger.info("[WifiWizard] - WiFi already configured")
+    on_wizard_exit()
     {:ok}
   end
 
