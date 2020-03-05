@@ -8,6 +8,7 @@ defmodule Spotiauth.MixProject do
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env),
+      test_coverage: [tool: ExCoveralls],
       deps: deps()
     ]
   end
@@ -25,7 +26,8 @@ defmodule Spotiauth.MixProject do
     [
       {:plug_cowboy, "~> 2.0"},
       {:spotify_ex, "~> 2.0.9"},
-      {:mock, "~> 0.3.0", only: :test}
+      {:mock, "~> 0.3.0", only: :test},
+      {:excoveralls, "~> 0.10", only: :test},
     ]
   end
 

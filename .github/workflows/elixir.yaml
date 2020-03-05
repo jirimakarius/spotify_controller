@@ -1,4 +1,7 @@
 name: Tests
+env:
+  MIX_ENV: test
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on: push
 
@@ -11,6 +14,18 @@ jobs:
 
         steps:
             -   uses: actions/checkout@v1
+            -   name: Get deps cache
+                uses: actions/cache@v1
+                with:
+                    path: deps/
+                    key: ${{ runner.os }}-deps-${{ hashFiles('**/mix.lock') }}
+                    restore-keys: ${{ runner.os }}-deps-
+            -   name: Get build cache
+                uses: actions/cache@v1
+                with:
+                    path: _build/test/
+                    key: ${{ runner.os }}-build-${{ hashFiles('**/mix.lock') }}
+                    restore-keys: ${{ runner.os }}-build-
             -   name: Install Dependencies
                 run: |
                     mix local.rebar --force
@@ -19,6 +34,4 @@ jobs:
                 working-directory: ./spotiauth
                 run: |
                     mix deps.get
-                    mix test
-                env:
-                    MIX_ENV: test
+                    mix coveralls.github
