@@ -7,6 +7,7 @@ erl_crash.dump
 *.ez
 *.beam
 *.secret.exs
+!test.secret.exs
 .elixir_ls/
 /tmp
 /node_modules
