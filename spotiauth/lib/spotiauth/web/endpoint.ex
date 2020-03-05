@@ -41,6 +41,7 @@ defmodule Spotiauth.Web.Endpoint do
           children,
           &DynamicSupervisor.terminate_child(__MODULE__, elem(&1, 1))
         )
+        :ok
     end
   end
 

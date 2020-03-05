@@ -2,7 +2,17 @@ defmodule SpotiauthTest do
   use ExUnit.Case
   doctest Spotiauth
 
-  test "greets the world" do
-    assert Spotiauth.hello() == :world
+  test "Starts server" do
+    assert Spotiauth.start() == :ok
+  end
+
+  test "Already started server" do
+    assert Spotiauth.start() == :ok
+  end
+
+  test "Stops server" do
+    Spotiauth.start()
+
+    assert Spotiauth.stop() == :ok
   end
 end
