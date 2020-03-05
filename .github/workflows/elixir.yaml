@@ -22,10 +22,3 @@ jobs:
                     mix test
                 env:
                     MIX_ENV: test
-            -   name: Run Spotifyware Tests
-                working-directory: ./spotifyware
-                run: |
-                    mix deps.get
-                    mix test
-                env:
-                    MIX_ENV: test
